@@ -30,7 +30,7 @@ class financialratiosWrapper {
         this.baseURL = 'https://api.apiverve.com/v1/financialratios';
 
         // Validation rules for parameters (generated from schema)
-        this.validationRules = {"ticker":{"type":"string","required":true,"minLength":1,"maxLength":6},"year":{"type":"integer","required":false,"min":2000,"max":2030},"quarter":{"type":"integer","required":false,"min":1,"max":4}};
+        this.validationRules = {"ticker":{"type":"string","required":true,"minLength":1,"maxLength":6},"year":{"type":"integer","required":false,"min":2000,"max":2030},"quarter":{"type":"integer","required":false,"min":1,"max":4},"valuation":{"type":"boolean","required":false}};
     }
 
     /**

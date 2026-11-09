@@ -39,6 +39,7 @@ declare module '@apiverve/financialratios' {
       efficiency:    Efficiency;
       cashFlow:      CashFlow;
       perShare:      PerShare;
+      valuation:     Valuation;
   }
   
   interface CashFlow {
@@ -51,14 +52,14 @@ declare module '@apiverve/financialratios' {
   interface Efficiency {
       assetTurnover:       number | null;
       inventoryTurnover:   number | null;
-      receivablesTurnover: number | null;
+      receivablesTurnover: null;
   }
   
   interface Leverage {
       debtToEquity:     number | null;
       debtToAssets:     number | null;
       equityMultiplier: number | null;
-      interestCoverage: null;
+      interestCoverage: number | null;
   }
   
   interface Liquidity {
@@ -74,11 +75,24 @@ declare module '@apiverve/financialratios' {
   }
   
   interface Profitability {
-      grossMargin:     number | null;
+      grossMargin:     null;
       operatingMargin: number | null;
       netMargin:       number | null;
       returnOnEquity:  number | null;
       returnOnAssets:  number | null;
+  }
+  
+  interface Valuation {
+      priceAsOf:         Date | null;
+      marketCap:         number | null;
+      priceToEarnings:   number | null;
+      earningsYield:     number | null;
+      priceToSales:      number | null;
+      priceToBook:       number | null;
+      trailingEps:       number | null;
+      trailingRevenue:   number | null;
+      trailingNetIncome: number | null;
+      trailingBasis:     null | string;
   }
 
   export default class financialratiosWrapper {

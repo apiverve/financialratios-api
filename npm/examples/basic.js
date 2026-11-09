@@ -17,7 +17,8 @@ const api = new financialratiosAPI({
 var query = {
   ticker: "AAPL",
   year: 0,
-  quarter: 0
+  quarter: 0,
+  valuation: true
 };
 
 // Make the API request using callback
