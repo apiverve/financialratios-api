@@ -26,7 +26,8 @@ class FinancialratiosAPIClient:
     VALIDATION_RULES = {
         "ticker": {"type": "string", "required": True, "minLength": 1, "maxLength": 6},
         "year": {"type": "integer", "required": False, "min": 2000, "max": 2030},
-        "quarter": {"type": "integer", "required": False, "min": 1, "max": 4}
+        "quarter": {"type": "integer", "required": False, "min": 1, "max": 4},
+        "valuation": {"type": "boolean", "required": False}
     }
 
     # Format validation patterns
