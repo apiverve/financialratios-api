@@ -10,7 +10,7 @@ module APIVerve
     #
     # @example Basic usage
     #   client = APIVerve::Financialratios::Client.new(api_key: "your_api_key")
-    #   response = client.execute({ ticker: "AAPL", year: 0, quarter: 0 })
+    #   response = client.execute({ ticker: "AAPL", year: 0, quarter: 0, valuation: true })
     #   puts response
     #
     # @see https://apiverve.com/marketplace/financialratios?utm_source=ruby&utm_medium=referral&utm_content=readme
@@ -19,7 +19,7 @@ module APIVerve
       DEFAULT_TIMEOUT = 30
 
       # Validation rules for parameters
-      VALIDATION_RULES = { 'ticker' => { type: 'string', required: true, min_length: 1, max_length: 6 }, 'year' => { type: 'integer', required: false, min: 2000, max: 2030 }, 'quarter' => { type: 'integer', required: false, min: 1, max: 4 } }
+      VALIDATION_RULES = { 'ticker' => { type: 'string', required: true, min_length: 1, max_length: 6 }, 'year' => { type: 'integer', required: false, min: 2000, max: 2030 }, 'quarter' => { type: 'integer', required: false, min: 1, max: 4 }, 'valuation' => { type: 'boolean', required: false } }
 
       # Format validation patterns
       FORMAT_PATTERNS = {
