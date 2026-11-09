@@ -70,6 +70,7 @@ class FinancialratiosData {
   FinancialratiosDataEfficiency? efficiency;
   FinancialratiosDataCashflow? cashFlow;
   FinancialratiosDataPershare? perShare;
+  FinancialratiosDataValuation? valuation;
 
   FinancialratiosData({
     this.ticker,
@@ -86,6 +87,7 @@ class FinancialratiosData {
     this.efficiency,
     this.cashFlow,
     this.perShare,
+    this.valuation,
   });
 
   factory FinancialratiosData.fromJson(Map<String, dynamic> json) => FinancialratiosData(
@@ -103,11 +105,12 @@ class FinancialratiosData {
       efficiency: json['efficiency'] != null ? FinancialratiosDataEfficiency.fromJson(json['efficiency']) : null,
       cashFlow: json['cashFlow'] != null ? FinancialratiosDataCashflow.fromJson(json['cashFlow']) : null,
       perShare: json['perShare'] != null ? FinancialratiosDataPershare.fromJson(json['perShare']) : null,
+      valuation: json['valuation'] != null ? FinancialratiosDataValuation.fromJson(json['valuation']) : null,
     );
 }
 
 class FinancialratiosDataProfitability {
-  num? grossMargin;
+  dynamic grossMargin;
   num? operatingMargin;
   num? netMargin;
   num? returnOnEquity;
@@ -152,7 +155,7 @@ class FinancialratiosDataLeverage {
   num? debtToEquity;
   num? debtToAssets;
   num? equityMultiplier;
-  dynamic interestCoverage;
+  num? interestCoverage;
 
   FinancialratiosDataLeverage({
     this.debtToEquity,
@@ -172,7 +175,7 @@ class FinancialratiosDataLeverage {
 class FinancialratiosDataEfficiency {
   num? assetTurnover;
   num? inventoryTurnover;
-  num? receivablesTurnover;
+  dynamic receivablesTurnover;
 
   FinancialratiosDataEfficiency({
     this.assetTurnover,
@@ -226,20 +229,62 @@ class FinancialratiosDataPershare {
     );
 }
 
+class FinancialratiosDataValuation {
+  String? priceAsOf;
+  num? marketCap;
+  num? priceToEarnings;
+  num? earningsYield;
+  num? priceToSales;
+  num? priceToBook;
+  num? trailingEps;
+  num? trailingRevenue;
+  num? trailingNetIncome;
+  String? trailingBasis;
+
+  FinancialratiosDataValuation({
+    this.priceAsOf,
+    this.marketCap,
+    this.priceToEarnings,
+    this.earningsYield,
+    this.priceToSales,
+    this.priceToBook,
+    this.trailingEps,
+    this.trailingRevenue,
+    this.trailingNetIncome,
+    this.trailingBasis,
+  });
+
+  factory FinancialratiosDataValuation.fromJson(Map<String, dynamic> json) => FinancialratiosDataValuation(
+      priceAsOf: json['priceAsOf'],
+      marketCap: json['marketCap'],
+      priceToEarnings: json['priceToEarnings'],
+      earningsYield: json['earningsYield'],
+      priceToSales: json['priceToSales'],
+      priceToBook: json['priceToBook'],
+      trailingEps: json['trailingEps'],
+      trailingRevenue: json['trailingRevenue'],
+      trailingNetIncome: json['trailingNetIncome'],
+      trailingBasis: json['trailingBasis'],
+    );
+}
+
 class FinancialratiosRequest {
   String ticker;
   int? year;
   int? quarter;
+  bool? valuation;
 
   FinancialratiosRequest({
     required this.ticker,
     this.year,
     this.quarter,
+    this.valuation,
   });
 
   Map<String, dynamic> toJson() => {
       'ticker': ticker,
       if (year != null) 'year': year,
       if (quarter != null) 'quarter': quarter,
+      if (valuation != null) 'valuation': valuation,
     };
 }

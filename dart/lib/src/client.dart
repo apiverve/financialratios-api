@@ -52,6 +52,7 @@ final _formatPatterns = {
 /// * [ticker] (required) - Stock ticker symbol (e.g. AAPL, MSFT, ADBE) [minLength: 1, maxLength: 6]
 /// * [year] - Fiscal year to retrieve. Defaults to latest available. History covers only the quarters captured so far; a missing period answers 404 listing the available ones. [min: 2000, max: 2030]
 /// * [quarter] - Fiscal quarter to retrieve. Defaults to latest available. [min: 1, max: 4]
+/// * [valuation] - Add a valuation block: market cap, P/E, earnings yield, P/S and P/B against the latest stored share price, with the trailing-twelve-month EPS, revenue and net income behind them. Latest filing only; null for a year/quarter request. The block is paid; free plans get it back null.
 class FinancialratiosClient {
   final String apiKey;
   final String baseUrl;
@@ -62,6 +63,7 @@ class FinancialratiosClient {
     'ticker': ValidationRule(type: 'string', required: true, minLength: 1, maxLength: 6),
     'year': ValidationRule(type: 'integer', required: false, min: 2000, max: 2030),
     'quarter': ValidationRule(type: 'integer', required: false, min: 1, max: 4),
+    'valuation': ValidationRule(type: 'boolean', required: false),
   };
 
   FinancialratiosClient(this.apiKey, {
