@@ -1,6 +1,6 @@
 # [Financial Ratios API](https://apiverve.com/marketplace/financialratios?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 
-Financial Ratios returns the key profitability, liquidity, leverage, efficiency and cash-flow ratios for a US public company by ticker - margins, ROE, ROA, current ratio, debt-to-equity, interest coverage, asset turnover, FCF margin and more - all computed from SEC filing data.
+Financial Ratios returns the key profitability, liquidity, leverage, efficiency and cash-flow ratios for a US public company by ticker - margins, ROE, ROA, current ratio, debt-to-equity, interest coverage, asset turnover, FCF margin and more - all computed from SEC filing data. On paid plans, valuation&#x3D;true adds market cap, P/E, P/S, P/B and earnings yield against the latest stored share price.
 
 The Financial Ratios API provides a simple, reliable way to integrate financial ratios functionality into your applications. Built for developers who need production-ready financial ratios capabilities without the complexity of building from scratch.
 
@@ -31,7 +31,8 @@ The Financial Ratios API provides a simple, reliable way to integrate financial 
 async function callFinancialRatiosAPI() {
     try {
         const params = new URLSearchParams({
-            ticker: 'AAPL'
+            ticker: 'AAPL',
+            valuation: true
         });
 
         const response = await fetch(`https://api.apiverve.com/v1/financialratios?${params}`, {
@@ -54,7 +55,7 @@ callFinancialRatiosAPI();
 ### Using cURL
 
 ```bash
-curl -X GET "https://api.apiverve.com/v1/financialratios?ticker=AAPL" \
+curl -X GET "https://api.apiverve.com/v1/financialratios?ticker=AAPL&valuation=true" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
@@ -211,47 +212,59 @@ A real response from the Financial Ratios API:
   "status": "ok",
   "error": null,
   "data": {
-    "ticker": "AAPL",
-    "company": "Apple Inc.",
-    "cik": "0000320193",
-    "fiscalYear": 2025,
+    "ticker": "COST",
+    "company": "COSTCO WHOLESALE CORP /NEW",
+    "cik": "0000909832",
+    "fiscalYear": 2026,
     "fiscalQuarter": 4,
     "filingType": "10-K",
-    "filingDate": "2025-10-31",
-    "periodEnd": "2025-09-27",
+    "filingDate": "2026-10-07",
+    "periodEnd": "2026-08-30",
     "profitability": {
-      "grossMargin": 46.91,
-      "operatingMargin": 31.97,
-      "netMargin": 26.92,
-      "returnOnEquity": 151.91,
-      "returnOnAssets": 31.18
+      "grossMargin": null,
+      "operatingMargin": 3.85,
+      "netMargin": 3.04,
+      "returnOnEquity": 25.77,
+      "returnOnAssets": 10.36
     },
     "liquidity": {
-      "currentRatio": 0.89,
-      "quickRatio": 0.86,
-      "cashRatio": 0.22
+      "currentRatio": 1.06,
+      "quickRatio": 0.62,
+      "cashRatio": 0.46
     },
     "leverage": {
-      "debtToEquity": 3.87,
-      "debtToAssets": 0.79,
-      "equityMultiplier": 4.87,
-      "interestCoverage": null
+      "debtToEquity": 1.49,
+      "debtToAssets": 0.6,
+      "equityMultiplier": 2.49,
+      "interestCoverage": 80.59
     },
     "efficiency": {
-      "assetTurnover": 1.16,
-      "inventoryTurnover": 38.64,
-      "receivablesTurnover": 10.46
+      "assetTurnover": 3.4,
+      "inventoryTurnover": 13.68,
+      "receivablesTurnover": null
     },
     "cashFlow": {
-      "freeCashFlow": 98767000000,
-      "fcfMargin": 23.73,
-      "operatingCashFlowMargin": 26.79,
-      "capexToRevenue": 3.06
+      "freeCashFlow": 9382000000,
+      "fcfMargin": 3.09,
+      "operatingCashFlowMargin": 5.22,
+      "capexToRevenue": 2.12
     },
     "perShare": {
-      "eps": 7.46,
-      "bookValuePerShare": 4.914,
-      "freeCashFlowPerShare": 6.5824
+      "eps": 20.76,
+      "bookValuePerShare": 80.5599,
+      "freeCashFlowPerShare": 21.1103
+    },
+    "valuation": {
+      "priceAsOf": "2026-11-05T21:00:00.000Z",
+      "marketCap": 473576966930,
+      "priceToEarnings": 51.33,
+      "earningsYield": 1.95,
+      "priceToSales": 1.56,
+      "priceToBook": 13.23,
+      "trailingEps": 20.76,
+      "trailingRevenue": 303154000000,
+      "trailingNetIncome": 9226000000,
+      "trailingBasis": "annual"
     }
   }
 }

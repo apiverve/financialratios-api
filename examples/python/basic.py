@@ -18,7 +18,7 @@ def call_financialratios_api():
     """
     try:
         # Query parameters
-        params &#x3D; {&#x27;ticker&#x27;: &#x27;AAPL&#x27;}
+        params &#x3D; {&#x27;ticker&#x27;: &#x27;AAPL&#x27;, &#x27;valuation&#x27;: true}
 
         headers = {
             'x-api-key': API_KEY

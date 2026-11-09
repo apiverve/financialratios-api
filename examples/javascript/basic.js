@@ -15,7 +15,8 @@ async function callFinancialRatiosAPI() {
   try {
     // Query parameters
     const params &#x3D; new URLSearchParams({
-            ticker: &#x27;AAPL&#x27;
+            ticker: &#x27;AAPL&#x27;,
+            valuation: true
         });
 
     const response = await fetch(`${API_URL}?${params}`, {
