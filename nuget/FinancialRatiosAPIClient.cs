@@ -69,7 +69,8 @@ namespace APIVerve.API.FinancialRatios
         {
             { "ticker", new ValidationRule { Type = "string", Required = true, MinLength = 1, MaxLength = 6 } },
             { "year", new ValidationRule { Type = "integer", Required = false, Min = 2000, Max = 2030 } },
-            { "quarter", new ValidationRule { Type = "integer", Required = false, Min = 1, Max = 4 } }
+            { "quarter", new ValidationRule { Type = "integer", Required = false, Min = 1, Max = 4 } },
+            { "valuation", new ValidationRule { Type = "boolean", Required = false } }
         };
 
         /// <summary>Format validation patterns</summary>

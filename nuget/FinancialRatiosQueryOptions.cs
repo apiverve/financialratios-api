@@ -27,5 +27,11 @@ namespace APIVerve.API.FinancialRatios
         /// </summary>
         [JsonProperty("quarter")]
         public int? Quarter { get; set; }
+
+        /// <summary>
+        /// Add a valuation block: market cap, P/E, earnings yield, P/S and P/B against the latest stored share price, with the trailing-twelve-month EPS, revenue and net income behind them. Latest filing only; null for a year/quarter request. The block is paid; free plans get it back null.
+        /// </summary>
+        [JsonProperty("valuation")]
+        public bool? Valuation { get; set; }
     }
 }

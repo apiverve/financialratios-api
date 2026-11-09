@@ -73,6 +73,9 @@ namespace APIVerve.API.FinancialRatios
 
         [JsonProperty("perShare")]
         public PerShare PerShare { get; set; }
+
+        [JsonProperty("valuation")]
+        public Valuation Valuation { get; set; }
     }
 
     public partial class CashFlow
@@ -99,7 +102,7 @@ namespace APIVerve.API.FinancialRatios
         public double? InventoryTurnover { get; set; }
 
         [JsonProperty("receivablesTurnover")]
-        public double? ReceivablesTurnover { get; set; }
+        public object ReceivablesTurnover { get; set; }
     }
 
     public partial class Leverage
@@ -114,7 +117,7 @@ namespace APIVerve.API.FinancialRatios
         public double? EquityMultiplier { get; set; }
 
         [JsonProperty("interestCoverage")]
-        public object InterestCoverage { get; set; }
+        public double? InterestCoverage { get; set; }
     }
 
     public partial class Liquidity
@@ -144,7 +147,7 @@ namespace APIVerve.API.FinancialRatios
     public partial class Profitability
     {
         [JsonProperty("grossMargin")]
-        public double? GrossMargin { get; set; }
+        public object GrossMargin { get; set; }
 
         [JsonProperty("operatingMargin")]
         public double? OperatingMargin { get; set; }
@@ -157,6 +160,39 @@ namespace APIVerve.API.FinancialRatios
 
         [JsonProperty("returnOnAssets")]
         public double? ReturnOnAssets { get; set; }
+    }
+
+    public partial class Valuation
+    {
+        [JsonProperty("priceAsOf")]
+        public DateTimeOffset? PriceAsOf { get; set; }
+
+        [JsonProperty("marketCap")]
+        public long? MarketCap { get; set; }
+
+        [JsonProperty("priceToEarnings")]
+        public double? PriceToEarnings { get; set; }
+
+        [JsonProperty("earningsYield")]
+        public double? EarningsYield { get; set; }
+
+        [JsonProperty("priceToSales")]
+        public double? PriceToSales { get; set; }
+
+        [JsonProperty("priceToBook")]
+        public double? PriceToBook { get; set; }
+
+        [JsonProperty("trailingEps")]
+        public double? TrailingEps { get; set; }
+
+        [JsonProperty("trailingRevenue")]
+        public long? TrailingRevenue { get; set; }
+
+        [JsonProperty("trailingNetIncome")]
+        public long? TrailingNetIncome { get; set; }
+
+        [JsonProperty("trailingBasis")]
+        public string TrailingBasis { get; set; }
     }
 
     public partial class Premium
